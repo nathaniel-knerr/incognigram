@@ -258,16 +258,16 @@ export default function PostCard({ post }: { post: Post }) {
                             </button>
                             <span className="text-md p-1 px-2">{postDislikes}</span>
                         </div>
-                        <div className="flex flex-row items-center">
-                            {
-                                user ?
+                        {
+                            user?.id === post.user_id ?
+                            <div className="flex flex-row items-center">
                                 <button onClick={deletePost}>
                                     <Trash size={24} />
                                 </button>
-                                :
-                                <></>
-                            }
-                        </div>
+                            </div>
+                            :
+                            <></>
+                        }
                     </div>
                 </article>
             }
