@@ -23,7 +23,7 @@ export default function PostCard({ post }: { post: Post }) {
         const { data, error } = await supabase.auth.getUser();
 
         if (error) {
-            console.error(error);
+            console.log(error);
             return;
         }
 
