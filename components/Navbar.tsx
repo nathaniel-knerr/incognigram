@@ -45,6 +45,7 @@ export default function Navbar() {
         
     }, []);
 
+    
     return(
         <>
             <header className="flex flex-col items-center bg-gray-800 mb-4">
