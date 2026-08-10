@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 
 export default function Navbar() {
     const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState(true);
 
     const router = useRouter();
 
@@ -37,9 +38,15 @@ export default function Navbar() {
     }
 
 
+    async function renderNavbar() {
+        await getUser();
+        setLoading(false);
+    }
+
+
     useEffect(() => {
 
-        getUser();
+        renderNavbar();
     
         supabase.auth.onAuthStateChange(getUser);
         
@@ -54,15 +61,21 @@ export default function Navbar() {
                         <h1 className="text-2xl text-white font-bold m-1">Incognigram</h1>
                     </Link>
                     <div className="w-full flex flex-row justify-center md:justify-end">
-                        {user ? 
-                            <>
-                                <Link href="/profile" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Profile</Link>
-                                <button onClick={logOut} className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Log Out</button>
-                            </>
+                        {loading ?
+                            <></>
                             :
                             <>
-                                <Link href="/log-in" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Log In</Link>
-                                <Link href="/sign-up" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Sign Up</Link>
+                                {user ? 
+                                    <>
+                                        <Link href="/profile" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Profile</Link>
+                                        <button onClick={logOut} className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Log Out</button>
+                                    </>
+                                    :
+                                    <>
+                                        <Link href="/log-in" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Log In</Link>
+                                        <Link href="/sign-up" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Sign Up</Link>
+                                    </>
+                                }
                             </>
                         }
                     </div>
