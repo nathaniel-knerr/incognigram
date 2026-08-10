@@ -10,27 +10,32 @@ export default function Profile() {
 
   const [userPosts, setUserPosts] = useState<Array<Post>>([]);
   const [postContent, setPostContent] = useState("");
+  const [loadingPosts, setLoadingPosts] = useState(true);
 
 
   async function getUserPosts() {
-    const userRequest = await supabase.auth.getUser();
-    const user: User | null = userRequest.data.user;
-
-    if (user) {
-        const postsRequest = await supabase.from("posts")
-            .select()
-            .eq("user_id", user.id)
-            .order("created_at", { ascending: false });
-            
-        const posts = postsRequest.data;
-            if (posts) {
-            setUserPosts(posts);
-        } else {
-            console.error("Error: Posts data not found.");
-        }
-    } else {
-        console.error("Error: Not logged into a user.");
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    
+    if (userError) {
+        console.error(userError);
+        return;
     }
+
+    const user = userData.user;
+
+    const { data: postsData, error: postsError } = await supabase.from("posts")
+        .select()
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false });
+            
+    if (postsError) {
+        console.error(postsError);
+        return;
+    } 
+        
+    setUserPosts(postsData);
+    setLoadingPosts(false);
+
   }
 
 
@@ -79,7 +84,13 @@ export default function Profile() {
             </form>
         </section>
         <section className="w-full flex flex-col items-center">
+            {loadingPosts ?
+            <div className="w-16 h-16 animate-spin rounded-full border-6 border-purple-800 border-t-transparent"></div>
+            :
+            <>
             {userPosts.map((p) => <PostCard key={p.id} post={p} />)}
+            </>
+            }
         </section>
       </main>
     </>

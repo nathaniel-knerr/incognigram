@@ -8,6 +8,7 @@ import type { Post } from "@/types/post"
 export default function Home() {
 
   const [posts, setPosts] = useState<Array<Post>>([]);
+  const [loading, setLoading] = useState(true);
 
 
   async function getPosts() {
@@ -18,6 +19,7 @@ export default function Home() {
 
     if (allPosts) {
       setPosts(allPosts);
+      setLoading(false);
     } else {
       console.error("Error: Posts data not found.");
     }
@@ -33,7 +35,13 @@ export default function Home() {
   return (
     <>
       <main className="flex-1 flex flex-col items-center bg-gray-900">
+        {loading ?
+        <div className="w-16 h-16 animate-spin rounded-full border-6 border-purple-800 border-t-transparent"></div>
+        :
+        <>
         {posts.map((p) => <PostCard key={p.id} post={p} />)}
+        </>
+        }
       </main>
     </>
   );

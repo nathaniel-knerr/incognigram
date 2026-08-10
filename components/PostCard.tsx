@@ -11,12 +11,14 @@ import type { User } from "@supabase/supabase-js";
 export default function PostCard({ post }: { post: Post }) {
 
     // const [isUserPost, setIsUserPost] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState<User | null>(null)
     const [postLiked, setPostLiked] = useState(false);
-    const [postDisliked, setPostDisliked] = useState(false);
+    const [postDisliked, setPostDisliked] = useState<boolean | null>(null);
     const [postLikes, setPostLikes] = useState(0);
     const [postDislikes, setPostDislikes] = useState(0);
     const [postDeleted, setPostDeleted] = useState(false);
+
     
 
     async function updateUser() {
@@ -70,13 +72,15 @@ export default function PostCard({ post }: { post: Post }) {
                 .select()
                 .eq("user_id", user.id)
                 .eq("post_id", post.id);
-            const userLike = userLikeRequest.data!;
-
-            if (userLike.length > 0) {
-                setPostLiked(true);
-            } else {
-                setPostLiked(false);
+            const { data, error } = userLikeRequest;
+            
+            if (error) {
+                console.log(error);
+                return;
             }
+ 
+            setPostLiked(data.length > 0);
+            
         } else {
             console.log("User not logged in. Can't select from post_likes.");
         }
@@ -90,13 +94,15 @@ export default function PostCard({ post }: { post: Post }) {
                 .select()
                 .eq("user_id", user.id)
                 .eq("post_id", post.id);
-            const userDislike = userDislikeRequest.data!;
-
-            if (userDislike.length > 0) {
-                setPostDisliked(true);
-            } else {
-                setPostDisliked(false);
+            const { data, error } = userDislikeRequest;
+            
+            if (error) {
+                console.log(error);
+                return;
             }
+
+            setPostDisliked(data.length > 0);
+        
         } else {
             console.log("User not logged in. Can't select from post_dislikes.");
         }
@@ -179,10 +185,12 @@ export default function PostCard({ post }: { post: Post }) {
         await updateUser();
 
         await updatePostLikesCount();
-        await updatePostLiked();
-
         await updatePostDislikesCount();
-        await updatePostDisliked();
+
+        await updatePostLiked();
+        await updatePostDisliked(); 
+
+        setLoading(false);
     }
 
 
@@ -214,7 +222,7 @@ export default function PostCard({ post }: { post: Post }) {
     return(
         <>  
             {
-                postDeleted ?
+                postDeleted || loading ?
                 <></>
                 :
                 <article className="bg-white w-[65%] flex flex-col justify-center items-center p-4 m-4 rounded-xl">
