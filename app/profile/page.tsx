@@ -87,9 +87,9 @@ export default function Profile() {
     <>
       <main onSubmit={handleSubmit} className="flex-1 flex flex-col items-center bg-gray-900">
         <section className="w-full flex flex-col items-center">
-            <form className="bg-white w-[65%] p-4 m-4 flex flex-col items-center justify-center">
+            <form className="bg-white w-full md:w-[65%] p-4 m-4 flex flex-col items-center justify-center">
                 <h2 className="text-2xl text-black font-bold p-4">Create Post</h2>
-                <textarea onChange={(e) => updatePostArea(e.target)} className="w-full text-md h-10 p-2 border-2 border-gray-900 resize-none overflow-hidden" placeholder="What's on your mind?"/>
+                <textarea onChange={(e) => updatePostArea(e.target)} className="w-full md:w-[65%] text-md h-10 p-2 border-2 border-gray-900 resize-none overflow-hidden" placeholder="What's on your mind?"/>
                 <button type="submit" className="flex flex-col items-center justify-center text-md text-white bg-purple-800 m-4 p-2 px-4 rounded-sm">Post</button>
             </form>
         </section>

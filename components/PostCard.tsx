@@ -225,7 +225,7 @@ export default function PostCard({ post }: { post: Post }) {
                 postDeleted || loading ?
                 <></>
                 :
-                <article className="bg-white w-[65%] flex flex-col justify-center items-center p-4 m-4 rounded-xl">
+                <article className="bg-white w-[65%] flex flex-col justify-center items-center p-4 m-4 rounded-4xl rounded-tl-none">
                     <div className="w-full flex flex-row justify-start">
                         <span className="text-sm italic p-2">
                                 {
