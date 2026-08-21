@@ -248,7 +248,7 @@ export default function PostCard({ post }: { post: Post }) {
                             <button onClick={likePost}>
                                 {
                                     postLiked ? 
-                                    <ThumbsUp size={36} className="p-1 px-2 text-purple-700 fill-purple-700"/>
+                                    <ThumbsUp size={36} className="p-1 px-2 text-transparent fill-white"/>
                                     :
                                     <ThumbsUp size={36} className="p-1 px-2 text-white"/>
                                 }
@@ -259,7 +259,7 @@ export default function PostCard({ post }: { post: Post }) {
                             <button onClick={dislikePost}>
                                 {
                                     postDisliked ?
-                                    <ThumbsDown size={36} className="p-1 px-2 text-purple-700 fill-purple-700"/>
+                                    <ThumbsDown size={36} className="p-1 px-2 text-transparent fill-white"/>
                                     :
                                     <ThumbsDown size={36} className="p-1 px-2 text-white"/>
                                 }

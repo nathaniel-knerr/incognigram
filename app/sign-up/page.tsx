@@ -32,12 +32,12 @@ export default function SignUp() {
                     <h2 className="text-2xl text-white font-bold p-4">Sign Up</h2>
                     <div className="w-full md:w-[65%] flex flex-col p-4">
                         <label htmlFor="sign-up-email" className="text-md text-white">Email</label>
-                        <input id="sign-up-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full text-md p-1 bg-white"/>
+                        <input id="sign-up-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full text-md p-2 bg-white outline-purple-700"/>
                     </div>
 
                     <div className="w-full md:w-[65%] flex flex-col p-4">
                         <label htmlFor="sign-up-password" className="text-md text-white">Password</label>
-                        <input id="sign-up-password" type="password" value={password} onChange={(p) => setPassword(p.target.value)} className="w-full text-md p-1 bg-white"/>
+                        <input id="sign-up-password" type="password" value={password} onChange={(p) => setPassword(p.target.value)} className="w-full text-md p-2 bg-white outline-purple-700"/>
                     </div>
 
                     <button type="submit" className="flex flex-col items-center justify-center text-md text-white bg-purple-700 m-16 p-2 px-4 rounded-sm">Sign Up</button>

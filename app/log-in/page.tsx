@@ -30,12 +30,12 @@ export default function LogIn() {
                     <h2 className="text-2xl text-white font-bold p-4">Log In</h2>
                     <div className="w-full md:w-[65%] flex flex-col p-4">
                         <label htmlFor="log-in-email" className="text-md text-white">Email</label>
-                        <input id="log-in-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full text-md p-1"/>
+                        <input id="log-in-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full text-md p-2 outline-purple-700"/>
                     </div>
 
                     <div className="w-full md:w-[65%] flex flex-col p-4">
                         <label htmlFor="log-in-password" className="text-md text-white">Password</label>
-                        <input id="log-in-password" type="password" value={password} onChange={(p) => setPassword(p.target.value)} className="w-full text-md p-1"/>
+                        <input id="log-in-password" type="password" value={password} onChange={(p) => setPassword(p.target.value)} className="w-full text-md p-2 outline-purple-700"/>
                     </div>
 
                     <button type="submit" className="flex flex-col items-center justify-center text-md text-white bg-purple-700 m-16 p-2 px-4 rounded-sm">Log In</button>

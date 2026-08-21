@@ -89,13 +89,13 @@ export default function Profile() {
         <section className="w-full flex flex-col items-center">
             <form className="bg-gray-700 w-full md:w-[65%] p-4 m-4 flex flex-col items-center justify-center">
                 <h2 className="text-2xl text-white font-bold p-4">Create Post</h2>
-                <textarea onChange={(e) => updatePostArea(e.target)} className="w-full md:w-[65%] text-md h-10 p-2 border-none bg-white resize-none overflow-hidden" placeholder="What's on your mind?"/>
-                <button type="submit" className="flex flex-col items-center justify-center text-md text-white bg-purple-800 m-4 p-2 px-4 rounded-sm">Post</button>
+                <textarea onChange={(e) => updatePostArea(e.target)} className="w-full md:w-[65%] text-md outline-purple-700 h-10 p-2 border-none bg-white resize-none overflow-hidden" placeholder="What's on your mind?"/>
+                <button type="submit" className="flex flex-col items-center justify-center text-md text-white bg-purple-700 m-4 p-2 px-4 rounded-sm">Post</button>
             </form>
         </section>
         <section className="w-full flex flex-col items-center">
             {loadingPosts ?
-            <div className="w-16 h-16 animate-spin rounded-full border-6 border-purple-800 border-t-transparent"></div>
+            <div className="w-16 h-16 animate-spin rounded-full border-6 border-purple-700 border-t-transparent"></div>
             :
             <>
             {userPosts.map((p) => <PostCard key={p.id} post={p} />)}
