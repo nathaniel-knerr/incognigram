@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased scrollbar-thumb-purple-800 scrollbar-track-gray-800`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased scrollbar-thumb-purple-700 scrollbar-track-gray-800 scrollbar-thin`}>
       <body className="min-h-screen flex flex-col bg-gray-900">
         <Navbar />
         {children}

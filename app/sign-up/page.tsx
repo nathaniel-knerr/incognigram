@@ -28,19 +28,19 @@ export default function SignUp() {
     return(
         <>
             <main className="flex-1 flex flex-col items-center justify-center bg-gray-900">
-                <form onSubmit={handleSubmit} className="w-full md:w-[65%] flex flex-col items-center bg-white p-4 m-4 md:rounded-2xl">
-                    <h2 className="text-2xl text-black font-bold p-4">Sign Up</h2>
+                <form onSubmit={handleSubmit} className="w-full md:w-[65%] flex flex-col items-center bg-gray-700 p-4 m-4">
+                    <h2 className="text-2xl text-white font-bold p-4">Sign Up</h2>
                     <div className="w-full md:w-[65%] flex flex-col p-4">
-                        <label htmlFor="sign-up-email" className="text-md">Email</label>
-                        <input id="sign-up-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full text-md p-1 border-2 border-black"/>
+                        <label htmlFor="sign-up-email" className="text-md text-white">Email</label>
+                        <input id="sign-up-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full text-md p-1 bg-white"/>
                     </div>
 
                     <div className="w-full md:w-[65%] flex flex-col p-4">
-                        <label htmlFor="sign-up-password" className="text-md">Password</label>
-                        <input id="sign-up-password" type="password" value={password} onChange={(p) => setPassword(p.target.value)} className="w-full text-md p-1 border-2 border-black"/>
+                        <label htmlFor="sign-up-password" className="text-md text-white">Password</label>
+                        <input id="sign-up-password" type="password" value={password} onChange={(p) => setPassword(p.target.value)} className="w-full text-md p-1 bg-white"/>
                     </div>
 
-                    <button type="submit" className="flex flex-col items-center justify-center text-md text-white bg-purple-800 m-16 p-2 px-4 rounded-sm">Sign Up</button>
+                    <button type="submit" className="flex flex-col items-center justify-center text-md text-white bg-purple-700 m-16 p-2 px-4 rounded-sm">Sign Up</button>
                 </form>
             </main>
         </>

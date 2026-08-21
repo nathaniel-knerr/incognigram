@@ -65,20 +65,20 @@ export default function Navbar() {
                             <></>
                             :
                             <>
-                                <Link href="/" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">
+                                <Link href="/" className="flex flex-col items-center justify-center text-sm text-white bg-purple-700 p-1 px-2 rounded-sm m-1">
                                     <HomeIcon></HomeIcon>
                                 </Link>
                                 {user ? 
                                     <>
-                                        <Link href="/profile" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">
+                                        <Link href="/profile" className="flex flex-col items-center justify-center text-sm text-white bg-purple-700 p-1 px-2 rounded-sm m-1">
                                          <MessageCirclePlus></MessageCirclePlus>
                                         </Link>
-                                        <button onClick={logOut} className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Log Out</button>
+                                        <button onClick={logOut} className="flex flex-col items-center justify-center text-sm text-white bg-purple-700 p-1 px-2 rounded-sm m-1">Log Out</button>
                                     </>
                                     :
                                     <>
-                                        <Link href="/log-in" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Log In</Link>
-                                        <Link href="/sign-up" className="flex flex-col items-center justify-center text-sm text-white bg-purple-800 p-1 px-2 rounded-sm m-1">Sign Up</Link>
+                                        <Link href="/log-in" className="flex flex-col items-center justify-center text-sm text-white bg-purple-700 p-1 px-2 rounded-sm m-1">Log In</Link>
+                                        <Link href="/sign-up" className="flex flex-col items-center justify-center text-sm text-white bg-purple-700 p-1 px-2 rounded-sm m-1">Sign Up</Link>
                                     </>
                                 }
                             </>

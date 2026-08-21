@@ -225,9 +225,9 @@ export default function PostCard({ post }: { post: Post }) {
                 postDeleted || loading ?
                 <></>
                 :
-                <article className="bg-white w-full md:w-[65%] flex flex-col justify-center items-center p-4 m-4 rounded-4xl rounded-tl-none">
+                <article className="bg-gray-700 w-full md:w-[65%] flex flex-col justify-center items-center p-4 m-4">
                     <div className="w-full flex flex-row justify-start">
-                        <span className="text-sm italic p-2">
+                        <span className="text-sm text-white italic p-2">
                                 {
                                     new Date(post.created_at).toLocaleString(
                                         "en-US",
@@ -242,35 +242,35 @@ export default function PostCard({ post }: { post: Post }) {
                                 }
                         </span>
                     </div>
-                    <p className="text-md p-2">{post.content}</p>
+                    <p className="text-md text-white p-2">{post.content}</p>
                     <div className="w-[65%] flex flex-row justify-evenly items-center p-2">
                         <div className="flex flex-row items-center">
                             <button onClick={likePost}>
                                 {
                                     postLiked ? 
-                                    <ThumbsUp size={36} className="p-1 px-2 text-purple-800"/>
+                                    <ThumbsUp size={36} className="p-1 px-2 text-purple-700 fill-purple-700"/>
                                     :
-                                    <ThumbsUp size={36} className="p-1 px-2"/>
+                                    <ThumbsUp size={36} className="p-1 px-2 text-white"/>
                                 }
                             </button>
-                            <span className="text-md p-1 px-2">{postLikes}</span>
+                            <span className="text-md text-white p-1 px-2">{postLikes}</span>
                         </div>
                         <div className="flex flex-row items-center">
                             <button onClick={dislikePost}>
                                 {
                                     postDisliked ?
-                                    <ThumbsDown size={36} className="p-1 px-2 text-purple-800"/>
+                                    <ThumbsDown size={36} className="p-1 px-2 text-purple-700 fill-purple-700"/>
                                     :
-                                    <ThumbsDown size={36} className="p-1 px-2"/>
+                                    <ThumbsDown size={36} className="p-1 px-2 text-white"/>
                                 }
                             </button>
-                            <span className="text-md p-1 px-2">{postDislikes}</span>
+                            <span className="text-md text-white p-1 px-2">{postDislikes}</span>
                         </div>
                         {
                             user?.id === post.user_id ?
                             <div className="flex flex-row items-center">
                                 <button onClick={deletePost}>
-                                    <Trash size={24} />
+                                    <Trash size={24} className="text-white"/>
                                 </button>
                             </div>
                             :
